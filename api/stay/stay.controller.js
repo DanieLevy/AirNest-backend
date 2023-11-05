@@ -13,26 +13,7 @@ export async function getStays(req, res) {
 //add
 export async function addStay(req, res) {
   try {
-    const stay = {
-      name: req.body.name,
-      type: req.body.type,
-      imgUrls: req.body.imgUrls,
-      price: req.body.price,
-      summary: req.body.summary,
-      capacity: req.body.capacity,
-      amenities: req.body.amenities,
-      bathrooms: req.body.bathrooms,
-      bedrooms: req.body.bedrooms,
-      roomType: req.body.roomType,
-      host: req.body.host,
-      loc: req.body.loc,
-      reviews: req.body.reviews,
-      likedByUsers: req.body.likedByUsers,
-      beds: req.body.beds,
-      propertyType: req.body.propertyType,
-      labels: req.body.labels,
-    }
-
+    const stay = req.body
     const addedStay = await stayService.add(stay)
     res.json(addedStay)
   } catch (err) {
