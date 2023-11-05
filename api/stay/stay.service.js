@@ -92,7 +92,7 @@ async function add(stay) {
       propertyType: stay.propertyType,
       labels: stay.labels,
     }
-    stay.createdAt = Date.now()
+    newStay.createdAt = Date.now()
     const result = await collection.insertOne(newStay)
     stay._id = result.insertedId
   } catch (err) {
@@ -104,7 +104,7 @@ async function add(stay) {
 async function update(stay) {
   try {
     const collection = await dbService.getCollection(COLLECTION_KEY)
-    if (!stay._id) return `Cannot incert without ID, No Id found in object`
+    if (!stay._id) return `Cannot update without ID, No Id found in object`
 
     const stayToSave = {
       name: stay.name,
@@ -124,13 +124,14 @@ async function update(stay) {
       beds: stay.beds,
       propertyType: stay.propertyType,
       labels: stay.labels,
-      _id: stay._id,
+      createdAt: stay.createdAt,
     }
+
     await collection.updateOne({ _id: ObjectId(stay._id) }, { $set: stayToSave })
 
-    return stayToSave
+    return { ...stayToSave, _id: stay._id }
   } catch (err) {
-    logger.error(`cannot save stay ${stay._id}`, err)
+    logger.error(`cannot update stay ${stay._id}`, err)
     throw err
   }
 }
