@@ -3,7 +3,7 @@ import {
   addStay,
   // addStayMsg,
   getStayById,
-  // getStays,
+  getStays,
   removeStay,
   // removeStayMsg,
   updateStay,
@@ -13,7 +13,7 @@ import { log } from '../../middlewares/logger.middleware.js'
 
 export const stayRoutes = express.Router()
 
-// stayRoutes.get('/', log, getStays)
+stayRoutes.get('/', log, getStays)
 stayRoutes.get('/:stayId', getStayById)
 stayRoutes.post('/', addStay)
 stayRoutes.put('/:stayId', updateStay)

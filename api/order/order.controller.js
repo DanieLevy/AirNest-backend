@@ -30,6 +30,7 @@ export async function deleteOrder(req, res) {
 export async function addOrder(req, res) {
   try {
     let order = req.body
+
     const newOrder = await orderService.add(order)
 
     // const loginToken = authService.getLoginToken(loggedinUser)

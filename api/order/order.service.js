@@ -85,6 +85,8 @@ async function add(order) {
     const { checkIn, checkOut, guests, stay, buyer, hostId, hostName, status, totalPrice, nights } =
       order
 
+    // Log the IDs before converting them to ObjectId to check their format
+
     const orderToAdd = {
       checkIn,
       checkOut,
@@ -104,8 +106,10 @@ async function add(order) {
       totalPrice,
       nights,
     }
+
     const result = await collection.insertOne(orderToAdd)
-    order._id = result.insertedId
+    orderToAdd._id = result.insertedId
+    return orderToAdd
   } catch (err) {
     logger.error('cannot insert order', err)
     throw err

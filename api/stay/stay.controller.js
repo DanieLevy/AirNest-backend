@@ -1,19 +1,14 @@
 import { logger } from '../../services/logger.service.js'
 import { stayService } from './stay.service.js'
 
-// export async function getStays(req, res) {
-//   try {
-//     const { name, price, labels, createdAt, inStock, type, desc } = req.query
-//     const filterBy = { name, price: +price, inStock, labels, createdAt }
-//     const sortBy = { type, desc }
-
-//     const stays = await stayService.query(filterBy, sortBy)
-//     res.json(stays)
-//   } catch (err) {
-//     logger.error('Cannot load stays', err)
-//     res.status(400).send('Cannot load stays')
-//   }
-// }
+export async function getStays(req, res) {
+  try {
+    const stays = await stayService.query(req.query)
+    res.json(stays)
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+}
 
 //add
 export async function addStay(req, res) {

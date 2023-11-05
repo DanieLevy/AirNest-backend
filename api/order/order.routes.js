@@ -6,7 +6,7 @@ import { addOrder, getOrders, deleteOrder } from './order.controller.js'
 const router = express.Router()
 
 router.get('/', log, getOrders)
-router.post('/', log, requireAuth, addOrder)
+router.post('/', log, addOrder)
 router.delete('/:id', requireAuth, deleteOrder)
 
 export const orderRoutes = router
