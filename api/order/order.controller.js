@@ -1,7 +1,7 @@
 import { logger } from '../../services/logger.service.js'
 import { authService } from '../auth/auth.service.js'
 import { orderService } from './order.service.js'
-
+import { socketService } from '../../services/socket.service.js'
 export async function getOrders(req, res) {
   try {
     const orders = await orderService.query(req.query)

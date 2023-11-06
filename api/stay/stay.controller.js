@@ -1,5 +1,6 @@
 import { logger } from '../../services/logger.service.js'
 import { stayService } from './stay.service.js'
+import { socketService } from '../../services/socket.service.js'
 
 export async function getStays(req, res) {
   try {
@@ -15,6 +16,10 @@ export async function addStay(req, res) {
   try {
     const stay = req.body
     const addedStay = await stayService.add(stay)
+    await socketService.broadcast({
+      type: 'notficaiton',
+      data: { txt: 'new stay added!', type: 'success' },
+    })
     res.json(addedStay)
   } catch (err) {
     logger.error(`Cannot add stay`, err)
@@ -27,6 +32,10 @@ export async function updateStay(req, res) {
     const stay = req.body
 
     const updatedStay = await stayService.update(stay)
+    await socketService.broadcast({
+      type: 'notficaiton',
+      data: { txt: 'stay updated!', type: 'success' },
+    })
     res.json(updatedStay)
   } catch (err) {
     logger.error(`Cannot update stay`, err)

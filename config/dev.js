@@ -1,4 +1,4 @@
 export default {
-  dbURL: 'mongodb://127.0.0.1:27017',
+  dbURL: 'mongodb+srv://peleg:G1gJ8B8zPcrNWQ3K@airnest.tomb5ll.mongodb.net/',
   dbName: 'airnest',
 }
