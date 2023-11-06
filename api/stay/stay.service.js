@@ -4,7 +4,7 @@ import { utilService } from '../../services/util.service.js'
 import mongodb from 'mongodb'
 const { ObjectId } = mongodb
 const COLLECTION_KEY = 'stays'
-const PAGE_SIZE = 3
+const PAGE_SIZE = 20
 
 async function query(filterBy = {}) {
   try {
@@ -34,9 +34,9 @@ async function query(filterBy = {}) {
     var stayCursor = await collection.find(criteria)
 
     // Implement pagination if needed
-    // if (filterBy.pageIdx !== undefined) {
-    //   stayCursor = stayCursor.skip(filterBy.pageIdx * PAGE_SIZE).limit(PAGE_SIZE);
-    // }
+    if (filterBy.pageIdx !== undefined) {
+      stayCursor = stayCursor.skip(filterBy.pageIdx * PAGE_SIZE).limit(PAGE_SIZE)
+    }
 
     const stays = await stayCursor.toArray()
     return stays
