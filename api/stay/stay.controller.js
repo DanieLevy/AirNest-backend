@@ -18,7 +18,7 @@ export async function addStay(req, res) {
     const addedStay = await stayService.add(stay)
     await socketService.broadcast({
       type: 'notficaiton',
-      data: { txt: 'new stay added!', type: 'success' },
+      data: { txt: 'New stay added!', type: 'success' },
     })
     res.json(addedStay)
   } catch (err) {
@@ -49,6 +49,7 @@ export async function getStayById(req, res) {
     const { stayId } = req.params
 
     const stay = await stayService.getById(stayId)
+    
     res.json(stay)
   } catch (err) {
     logger.error('Cannot get stay', err)
