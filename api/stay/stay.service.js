@@ -21,7 +21,7 @@ async function query(filterBy = {}) {
     if (filterBy.region && filterBy.region !== '') {
       // Assuming region is in the format "City,Country" and you want to match against country
       const regionParts = filterBy.region.split(',')
-      const countryRegex = new RegExp(regionParts[regionParts.length - 1], 'i')
+      const countryRegex = new RegExp(regionParts[regionParts[0]], 'i')
       criteria['loc.country'] = { $regex: countryRegex }
     }
 
