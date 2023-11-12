@@ -1,4 +1,4 @@
-**This is a backend repository of [AirNest](https://airnest.onrender.com/) application, for more information check out the [Frontend]([https://github.com/Elihai-Sugarman/stay-by-frontend/](https://github.com/DanieLevy/AirNest-frontend)) repository!**
+**This is a backend repository of [AirNest](https://airnest.onrender.com/) application, for more information check out the [Frontend]([https://github.com/DanieLevy/AirNest-frontend]) repository!**
 
 # Getting Started
 
