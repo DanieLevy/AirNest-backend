@@ -29,7 +29,7 @@ async function connect() {
         dbConn = db
         return db
     } catch (err) {
-        logger.error('Cannot Connect to DB', err)
+        logger.error('Cannot Connect to DB Service', err)
         throw err
     }
 }
